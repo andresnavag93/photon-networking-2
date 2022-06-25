@@ -6,16 +6,18 @@ using UnityEngine;
 
 public class TestConnect : MonoBehaviourPunCallbacks
 {
-    // Start is called before the first frame update
     void Start()
     {
         Debug.Log("Connecting to server...");
+        PhotonNetwork.NickName = MasterManager.GameSettings.Nickname;
+        PhotonNetwork.GameVersion = MasterManager.GameSettings.GameVersion;
         PhotonNetwork.ConnectUsingSettings();
     }
 
     public override void OnConnectedToMaster()
     {
         Debug.Log("Connected to server");
+        Debug.Log(PhotonNetwork.LocalPlayer.NickName);
         PhotonNetwork.JoinRandomRoom();
     }
 
