@@ -13,7 +13,18 @@ public class RoomListingsMenu : MonoBehaviourPunCallbacks
     private RoomListing _roomListing;
 
     private List<RoomListing> _listing = new List<RoomListing>();
+    private RoomCanvases _roomCanvases;
 
+    public void FirstInitialize(RoomCanvases canvases)
+    {
+        _roomCanvases = canvases;
+    }
+
+    public override void OnJoinedRoom()
+    {
+        Debug.Log("On Joined Joined room successfully");
+        _roomCanvases.CurrentRoomCanvas.Show();
+    }
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
 
