@@ -18,11 +18,14 @@ public class TestConnect : MonoBehaviourPunCallbacks
     {
         Debug.Log("Connected to server");
         Debug.Log(PhotonNetwork.LocalPlayer.NickName);
-        PhotonNetwork.JoinRandomRoom();
+        PhotonNetwork.JoinLobby();
     }
-
     public override void OnDisconnected(DisconnectCause cause)
     {
         Debug.Log("Disconnected from server for reason" + cause.ToString());
+    }
+    public override void OnJoinedLobby()
+    {
+        Debug.Log("Joined lobby");
     }
 }
